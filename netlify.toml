@@ -1,0 +1,16 @@
+[build]
+  # Use the existing build script defined in package.json.  This builds the
+  # Vite client into `dist/public` and bundles the server into `dist`.  Netlify
+  # will run this command during deployment.
+  command = "npm run build"
+  publish = "dist/public"
+  functions = "netlify/functions"
+
+# Redirect all requests to the Netlify function for API calls.  The Express
+# server listens under `/api/*` in the app, so we proxy those requests to
+# the serverless function.  All other routes will be served from the static
+# build output in `dist/public`.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
