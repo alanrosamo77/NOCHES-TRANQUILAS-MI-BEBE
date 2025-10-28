@@ -1,0 +1,1 @@
+ALTER TABLE `sleepEvents` MODIFY COLUMN `eventType` enum('siesta_inicio','siesta_fin','noche_inicio','noche_fin','despertar','alimento','baño','cambio','llanto','juego','comida_nocturna','arrullo','estimulacion','panal','otro') NOT NULL;
